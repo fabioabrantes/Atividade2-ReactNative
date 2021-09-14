@@ -13,10 +13,10 @@ export function Home() {
     const newTask: Task = {
       id: new Date().getTime(),
       title: newTaskTitle,
-      done: false
-    }
+      done: false,
+    };
 
-    const newTasks = tasks.map(task => ({ ...task }));
+    const newTasks = tasks.map((task) => ({ ...task }));
     newTasks.push(newTask);
 
     setTasks(newTasks);
@@ -27,7 +27,9 @@ export function Home() {
   }
 
   function handleRemoveTask(id: number) {
-    //TODO - remove task from state
+    const newTasksList = tasks.filter((item) => item.id !== id);
+
+    setTasks(newTasksList);
   }
 
   return (
@@ -42,12 +44,12 @@ export function Home() {
         removeTask={handleRemoveTask}
       />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#EBEBEB'
-  }
-})
+    backgroundColor: '#EBEBEB',
+  },
+});
